@@ -31,7 +31,7 @@ public class Account {
         if (amount <= 0 || amount > balance) {
             return false;
         }
-        balance = amount;
+        balance -= amount;
         return true;
     }
 
