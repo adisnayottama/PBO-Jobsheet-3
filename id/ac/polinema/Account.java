@@ -1,41 +1,51 @@
 package id.ac.polinema;
 
-public class Account {
+public class Account { 
+    // Atribut private
     private String accountNumber;
-    private String ownerNAme;
+    private String ownerName; 
     private double balance;
+    private double dailyWithdrawalLimit;
 
-    public Account(String accountNumber, String ownerName, double balance) {
+    // KONSTRUKTOR
+    public Account(String accountNumber, String ownerName, double balance, double dailyWithdrawalLimit) {
         this.accountNumber = accountNumber;
-        this.ownerNAme = ownerName;
+        this.ownerName = ownerName;
         this.balance = balance;
+        this.dailyWithdrawalLimit = dailyWithdrawalLimit; 
     }
-    public  String getAccountNumber() {
-        return  accountNumber;
+
+    // Getter
+    public String getAccountNumber() {
+        return accountNumber;
     }
     public String getOwnerName() {
-        return ownerNAme;
+        return ownerName;
     }
     public double getBalance() {
         return balance;
     }
+
+    // Method deposit
     public boolean deposit(double amount) {
         if (amount <= 0) {
             return false;
         }
         balance += amount;
-        return  true;
+        return true;
     }
 
+    // Method withdraw
     public boolean withdraw(double amount) {
-        if (amount <= 0 || amount > balance) {
+        if (amount <= 0 || amount > balance || amount > dailyWithdrawalLimit) {
             return false;
         }
         balance -= amount;
         return true;
     }
 
+    // Method printInfo
     public void printInfo() {
-        System.out.println(accountNumber + " - " + ownerNAme + " - balance: " + balance);
+        System.out.println(accountNumber + " - " + ownerName + " - balance: " + balance);
     }
 }
